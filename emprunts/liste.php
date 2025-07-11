@@ -3,7 +3,7 @@ include("../auth/check.php");
 include("../config/db.php");
 include("../includes/header.php");
 
-// Récupérer les emprunts en cours (rendu = FALSE)
+
 $sqlEnCours = "
     SELECT e.id, l.titre, u.nom, u.email, e.date_emprunt, e.date_retour
     FROM emprunts e
@@ -24,8 +24,10 @@ $sqlPasses = "
 ";
 $empruntsPasses = $db->query($sqlPasses)->fetchAll();
 ?>
+<div style="width:200px; display:flex; justify-content: end;"><button class="btn"><a href="ajouter.php">Emprunter un livre</a></button></div>
 
 <div class="box">
+    
     <h2>Emprunts en cours</h2>
 
     <?php if (empty($empruntsEnCours)): ?>
@@ -93,7 +95,7 @@ $empruntsPasses = $db->query($sqlPasses)->fetchAll();
         </table>
     <?php endif; ?>
 
-    <button class="btn"><a href="ajouter.php">Emprunter un livre</a></button>
+    <!-- <button class="btn"><a href="ajouter.php">Emprunter un livre</a></button> -->
 </div>
 
 <?php include("../includes/footer.php"); ?>
